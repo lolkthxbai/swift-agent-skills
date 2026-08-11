@@ -1,0 +1,32 @@
+{
+  "name": "swift-agent-skills",
+  "version": "0.1.0",
+  "description": "Unofficial bundle of four MIT-licensed Swift agent skills created by Paul Hudson (@twostraws).",
+  "author": {
+    "name": "Paul Hudson (@twostraws)",
+    "url": "https://github.com/twostraws"
+  },
+  "homepage": "https://github.com/lolkthxbai/swift-agent-skills",
+  "repository": "https://github.com/lolkthxbai/swift-agent-skills",
+  "license": "MIT",
+  "keywords": [
+    "swift",
+    "swiftui",
+    "swiftdata",
+    "concurrency",
+    "testing"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Swift Agent Skills",
+    "shortDescription": "Four Swift development skills by Paul Hudson.",
+    "longDescription": "Bundles SwiftUI Pro, SwiftData Pro, Swift Concurrency Pro, and Swift Testing Pro by Paul Hudson (@twostraws).",
+    "developerName": "Paul Hudson (@twostraws)",
+    "category": "Developer Tools",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": "Review my Swift project using the relevant bundled skills."
+  }
+}

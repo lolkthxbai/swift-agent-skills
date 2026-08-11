@@ -1,0 +1,66 @@
+name: Sync upstream skills
+
+on:
+  schedule:
+    - cron: "17 9 * * *"
+      timezone: "America/New_York"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: sync-upstream-skills
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out bundle
+        uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09
+        with:
+          fetch-depth: 0
+
+      - name: Synchronize upstream skills
+        run: python3 scripts/sync_upstream.py
+
+      - name: Validate bundle
+        run: python3 scripts/validate_bundle.py
+
+      - name: Detect changes
+        id: changes
+        shell: bash
+        run: |
+          if git diff --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Open or update synchronization pull request
+        if: steps.changes.outputs.changed == 'true'
+        env:
+          BRANCH: automation/sync-upstream-skills
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git fetch origin "refs/heads/$BRANCH:refs/remotes/origin/$BRANCH" || true
+          git checkout -B "$BRANCH"
+          git add .codex-plugin/plugin.json ATTRIBUTION.md LICENSE licenses skills
+          git commit -m "Sync upstream Swift skills"
+          git push --force-with-lease origin "$BRANCH"
+
+          existing_url=$(gh pr list --base main --head "$BRANCH" --state open --json url --jq '.[0].url // empty')
+          if [[ -n "$existing_url" ]]; then
+            echo "Updated $existing_url"
+          else
+            gh pr create \
+              --base main \
+              --head "$BRANCH" \
+              --title "Sync upstream Swift skills" \
+              --body "Automated synchronization of Paul Hudson's four upstream Swift agent skills. The copied files and complete plugin passed validation before this pull request was opened."
+          fi
