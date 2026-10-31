@@ -4,8 +4,8 @@ Swift Agent Skills is an unofficial Codex plugin bundle containing four agent sk
 
 | Skill | Upstream repository | Bundled commit |
 | --- | --- | --- |
-| SwiftUI Pro | [SwiftUI-Agent-Skill](https://github.com/twostraws/SwiftUI-Agent-Skill) | `be297ff80dddec529af1f9b1f1f114aab6c9d11c` |
-| SwiftData Pro | [SwiftData-Agent-Skill](https://github.com/twostraws/SwiftData-Agent-Skill) | `922d989473a9914210b41529a1ac5636aff4b8c1` |
+| SwiftUI Pro | [SwiftUI-Agent-Skill](https://github.com/twostraws/SwiftUI-Agent-Skill) | `f2920b63995263f57b3e198674e89a602efba6d2` |
+| SwiftData Pro | [SwiftData-Agent-Skill](https://github.com/twostraws/SwiftData-Agent-Skill) | `8051f177a0076e7fd45bdf4ee687b070ba58fdc6` |
 | Swift Concurrency Pro | [Swift-Concurrency-Agent-Skill](https://github.com/twostraws/Swift-Concurrency-Agent-Skill) | `bee3f69ba17142da148d3c5406f148ed62592b69` |
 | Swift Testing Pro | [Swift-Testing-Agent-Skill](https://github.com/twostraws/Swift-Testing-Agent-Skill) | `2d6bba14a3c8bf3694f218b92fffe617c41ae43e` |
 

@@ -1,6 +1,6 @@
 {
   "name": "swift-agent-skills",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Unofficial bundle of four MIT-licensed Swift agent skills created by Paul Hudson (@twostraws).",
   "author": {
     "name": "Paul Hudson (@twostraws)",
